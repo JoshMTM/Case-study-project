@@ -2,8 +2,8 @@
     <form action="" class="search-form">
         <span class="logo" routerLink="/">BEER-UP</span>
     </form>
-    <input type="text" name="search" placeholder="Search 1000+ Beers locally and international" class="search-input"/>
-    <button class="search-button">
+    <input type="text" name="search" placeholder="Search 1000+ Beers locally and international" class="search-input" [(ngModel)]="searchInput"/>
+    <button class="search-button" (click)="onSearch()">
         Search
     </button>
 </div>
