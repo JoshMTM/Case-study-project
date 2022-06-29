@@ -1,0 +1,26 @@
+footer.main {
+    color:blue;
+    
+}
+
+
+#uncopyright {
+    width: 240px;
+    float: left;
+    font-size: 20px;
+    padding-top: 850px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+   
+    
+
+}
+
+#contact {
+   width: 240px;
+   float: right;
+   font-size: 20px;
+   padding-top: 850px;
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+}

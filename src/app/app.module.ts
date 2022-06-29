@@ -12,12 +12,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { SearchBarComponent } from './components/search-bar/search-bar.component'; 
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { FooterComponent } from './footer/footer.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
