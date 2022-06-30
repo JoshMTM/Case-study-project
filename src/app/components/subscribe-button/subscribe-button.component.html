@@ -1,0 +1,15 @@
+<!-- <button class="search-button">
+  Subscribe
+</button> -->
+<!-- <mat-slide-toggle [(ngModel)]="device" #slider>
+  {{ slider.checked ? 'Unsubscribe' : 'Subscribe' }}
+</mat-slide-toggle> -->
+
+<fieldset>
+  <legend>Save</legend>
+<label class="switch">
+
+  <input type="checkbox" [(ngModel)]="enableSwitch" (change)="update()">
+  <span class="slider"></span>
+</label>
+</fieldset>

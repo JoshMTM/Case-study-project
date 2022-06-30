@@ -1,3 +1,4 @@
+
 const express = require('express')
 const bodyParser = require("body-parser")
 const mongoose = require('mongoose')
@@ -70,19 +71,19 @@ app.get("/api/beers", (req, res, next) => {
 })
 
 app.use("/api/beers", (req, res, next) => {
-    const beers = [
-        {
-        id: "saldkasd",
-        name: "Guiness",
-        content: "very goood"
-    }]
+  const beers = [
+    {
+      id: "saldkasd",
+      name: "Guiness",
+      content: "very goood",
+    },
+  ];
 
-    res.status(200).json({
-        message: "beer fetched succesfully",
-        beers: beers
-    })
-})
-
+  res.status(200).json({
+    message: "beer fetched succesfully",
+    beers: beers,
+  });
+});
 
 // app.post("/api/books", (req, res, next) => {
 //     const book = req.body
@@ -101,5 +102,4 @@ app.use("/api/beers", (req, res, next) => {
 //     res.send('from backend')
 // })
 
-
-module.exports = app
+module.exports = app;
