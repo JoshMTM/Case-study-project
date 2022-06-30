@@ -13,10 +13,6 @@ export interface Beer {
 
   }
   
-  export interface APIResponse<T> {
-      results: Array<T>;
-  }
-  
   interface food_pairing {
     name: string;
   }
