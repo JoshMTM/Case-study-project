@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,15 +8,20 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   public sort: string | undefined;
-
+  @Output() beerSelected = new EventEmitter<void>();
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  
   goToPage(pageName:string):void{
     this.router.navigate([`${pageName}`]);
   }
+  
 
 
+  onSelected(){
+    this.beerSelected.emit();
+  }
 }
