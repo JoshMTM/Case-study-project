@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
-const brewerySchema = mongoose.Schema({
+const beerSchema = mongoose.Schema({
     id: {type: String},
     name: {type: String},
-    country: {type: String}
+    description: {type: String}
 })
 
-module.exports = mongoose.model('Brewery', brewerySchema)
+module.exports = mongoose.model('Beer', beerSchema)

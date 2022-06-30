@@ -26,11 +26,16 @@ export class SearchBarComponent implements OnInit {
     // this.http.get('http://localhost:3000/api/beers')
     // .subscribe((beerData) => {})
   }
+
   
   
   constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get<any>('http://localhost:3000/api/beers')
+    .subscribe((data) => {
+      console.log(data)
+    })
   }
   
   onSubmit(form: NgForm) {
