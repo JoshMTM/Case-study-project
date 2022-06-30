@@ -1,0 +1,32 @@
+<p>home works!</p>
+<div class="filters">
+    <mat-form-field>
+        <mat-label>Sort</mat-label>
+        <mat-select panelClass="sort-select" [(ngModel)]="sort">
+            <mat-option value="name">Name</mat-option>
+            <mat-option value="origin">Origin</mat-option>
+            <mat-option value="-added">Added</mat-option>
+            <mat-option value="-updated">Updated</mat-option>
+            <mat-option value="rating">Rating</mat-option>
+            <mat-option value="alcohol">Alcohol</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div class="beers">
+    <div class="beer">
+        <div class="beer-thumb-container">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/f2fd3e45376751.582e4d1f3b783.jpg" 
+            alt="thumbnail"
+            class="beer-thumbnail"
+            >
+        </div>
+        <div class="beer-description">
+            <p class="beer-name">Name</p>
+            <div class="beer-platforms">
+                <img src="https://www.amsterdamcareerdays.nl/wp-content/uploads/2020/12/Heineken-Logo1.png" 
+                alt="slug"
+                class="beer-platform">
+            </div>
+    </div>
+</div>

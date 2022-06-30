@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-search-bar',
@@ -21,10 +26,15 @@ export class SearchBarComponent implements OnInit {
     // this.http.get('http://localhost:3000/api/beers')
     // .subscribe((beerData) => {})
   }
-
-  constructor(private http: HttpClient) { }
+  
+  
+  constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+  }
+  
+  onSubmit(form: NgForm) {
+    this.router.navigate(['search', form.value.search])
   }
 
 }
