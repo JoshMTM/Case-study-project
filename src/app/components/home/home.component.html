@@ -15,11 +15,11 @@
 
 <div class="beers">
     <ng-container *ngFor="let beer of beers">
-    <div class="beer">
-        <div class="beer-thumb-container">
-            <img
-            *ngIf="beer.image_url"
-            src="{{ beer.image_url }}" 
+        <div class="beer">
+            <div class="beer-thumb-container">
+                <img
+                *ngIf="beer.name"
+            src="{{ beer.name }}" 
             alt="thumbnail"
             class="beer-thumbnail"
             />
@@ -27,11 +27,11 @@
         </div>
         <div class="beer-description">
             <p class="beer-name">{{beer.name}}</p>
-            <div class="beer-platforms">
+            <!-- <div class="beer-platforms">
                 <img src="https://www.amsterdamcareerdays.nl/wp-content/uploads/2020/12/Heineken-Logo1.png" 
                 alt="slug"
-                class="beer-platform">
-            </div>
+                class="beer-platform"/>
+            </div> -->
     </div>
 </div>
 </ng-container>
