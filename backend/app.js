@@ -1,12 +1,12 @@
 const express = require('express')
 const bodyParser = require("body-parser")
 const mongoose = require('mongoose')
-const Brewery = require('./models/brewery')
+const Beer = require('./models/brewery')
 const app = express()
 const request = require('request')
 
 app.use(bodyParser.json())
-const url = 'https://api.openbrewerydb.org/breweries'
+const url = 'https://api.punkapi.com/v2/beers'
 
 mongoose.connect("mongodb+srv://vladiepops:0YMYJNWqFK8ejaJ8@beerapp.gxkxh.mongodb.net/?retryWrites=true&w=majority")
 .then( () => {
@@ -22,7 +22,7 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*")
     res.setHeader(
         "Access-Control-Allow-Headers", 
-        "Origin, X-Requested-With, Content-Type, Accept")
+        "Origin, X-Requested-With, Content-Type, Accept, x-rapidapi-key, x-rapidapi-host")
     res.setHeader(
         "Access-Control-Allow-Methods", 
         "GET, POST, PATCH, DELETE, OPTIONS")
@@ -35,25 +35,38 @@ app.post("/api/beers", (req, res, next) => {
     const name = breweryName.toLowerCase()
     const result = name.replace(/ /g, '_')  
 
-    request({ url: url + '?by_name=' + result, method: 'GET' }, (error, response) => {
+    request({ url: url + '?beer_name=' + result, method: 'GET' }, (error, response) => {
         const data = JSON.parse(response.body)
         console.log(data)
         
         if (data.message !== "Couldn't find Brewery") {
-            const brewery = new Brewery ({
+            const beer = new Beer ({
                 id: data[0].id,
                 name: data[0].name,
-                country: data[0].country
+                description: data[0].description
             })
 
-                console.log(brewery)
+                console.log(beer)
 
-                brewery.save()
+                beer.save()
         }
     })
     res.status(201).json({
         message: 'Sucessfully retrieved data from frontend' 
     })
+})
+
+app.get("/api/beers", (req, res, next) => {
+    Beer.find()
+    .then(data => {
+        console.log(data)
+        res.status(200).json({
+            message: "Successfully retrieved beers",
+            beers: data
+        })
+        
+    })
+    
 })
 
 app.use("/api/beers", (req, res, next) => {

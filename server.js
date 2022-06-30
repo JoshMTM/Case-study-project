@@ -9,9 +9,9 @@ const port = process.env.PORT || 3000
 app.set('port', port)
 const server = http.createServer(app)
 
-request({ url: url + 'MadTree Brewing' }, (error, response) => {
-    const data = JSON.parse(response.body)
-    console.log(data)
-})
+// request({ url: url + 'MadTree Brewing' }, (error, response) => {
+//     const data = JSON.parse(response.body)
+//     console.log(data)
+// })
 
 server.listen(port)
