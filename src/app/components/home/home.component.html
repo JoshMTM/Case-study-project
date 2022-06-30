@@ -23,7 +23,7 @@
             alt="thumbnail"
             class="beer-thumbnail"
             />
-            <p ngIf="!beer.image_url">No Image</p>
+            <p *ngIf="!beer.image_url">No Image</p>
         </div>
         <div class="beer-description">
             <p class="beer-name">{{beer.name}}</p>
