@@ -14,12 +14,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FooterComponent } from './footer/footer.component'; 
+import { HomeComponent } from './components/home/home.component';
+import { DetailsComponent } from './details/details.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     FooterComponent,
+    HomeComponent,
+    DetailsComponent,
+    
   ],
   imports: [
     BrowserModule,
