@@ -18,13 +18,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.activatedRoute.params.subscribe((params: Params) => {
-    //   if (params['beer-search']) {
-    //     this.searchBeers('metacrit', params['beer-search']);
-    //   } else {
-    //     this.searchBeers('metacrit');
-    //   }
-    // })
 
     this.httpService
     .getBeerList('metacrit')
@@ -33,15 +26,8 @@ export class HomeComponent implements OnInit {
       console.log(this.beers);
     })
   }
+  
 
-  // searchBeers(sort: string, search?: string): void {
-  //   this.httpService
-  //   .getBeerList(sort, search)
-  //   .subscribe((beerList: Array<Beer>) => {
-  //     this.beers = beerList.results;
-  //     console.log(beerList);
-  //   })
-  // }
 
 
 }

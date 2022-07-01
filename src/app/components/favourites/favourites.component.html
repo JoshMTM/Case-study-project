@@ -1,11 +1,12 @@
-<p>favourites works!</p>
+<p>YOUR FAVOURITE BEERS</p>
 
+<p *ngFor="let beer1 of beers1.beers">
+    {{beer1.name}}
+</p>
 
-<div class="beers">
-    <div *ngFor="let beer of beers">
-
+<!-- <div class="beers">
+    <ng-container *ngFor="let beer of beers1">
     <div class="beer">
-        
         <div class="beer-thumb-container">
             <img
             *ngIf="beer.image_url"
@@ -14,7 +15,6 @@
             class="beer-thumbnail"
             />
             <p *ngIf="!beer.image_url">No Image</p>
-           
         </div>
         <div class="beer-description">
             <p class="beer-name">{{beer.name}}</p>
@@ -23,9 +23,7 @@
                 alt="slug"
                 class="beer-platform">
             </div>
-        </div>
-
     </div>
 </div>
-</div>
-
+</ng-container>
+</div> -->

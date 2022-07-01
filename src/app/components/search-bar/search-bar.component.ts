@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -34,7 +34,7 @@ export class SearchBarComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<any>('http://localhost:3000/api/beers')
     .subscribe((data) => {
-      console.log(data)
+      // console.log(data)
     })
   }
   
@@ -43,10 +43,10 @@ export class SearchBarComponent implements OnInit {
   }
 
   onClick() {
-    // this.http.get<any>('http://localhost:3000/api/beers')
-    // .subscribe((data) => {
-    //   console.log(data)
-    // })
+    this.http.get<any>('http://localhost:3000/api/beers')
+    .subscribe((data) => {
+      console.log(data)
+    })
   }
 
 }
