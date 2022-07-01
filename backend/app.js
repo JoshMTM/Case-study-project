@@ -31,26 +31,32 @@ app.use((req, res, next) => {
 
 // fetch from angular the search-content and automatically retrieve from the brewery-API the corresponding brewery
 app.post("/api/beers", (req, res, next) => {
-    const breweryName = req.body.content
-    const name = breweryName.toLowerCase()
-    const result = name.replace(/ /g, '_')  
-
-    request({ url: url + '?beer_name=' + result, method: 'GET' }, (error, response) => {
-        const data = JSON.parse(response.body)
-        console.log(data)
-        
-        if (data.message !== "Couldn't find Brewery") {
-            const beer = new Beer ({
-                id: data[0].id,
-                name: data[0].name,
-                description: data[0].description
-            })
-
-                console.log(beer)
-
-                beer.save()
-        }
+    const data = req.body
+    console.log(data)
+    const beer = new Beer ({
+        id: data.id,
+        image_url : data.image_url, 
+        name: data.name, 
+        description: data.description,
     })
+    beer.save()
+
+    // request({ url: url + '?beer_name=' + result, method: 'GET' }, (error, response) => {
+    //     const data = JSON.parse(response.body)
+    //     console.log(data)
+        
+    //     if (data.message !== "Couldn't find Brewery") {
+    //         const beer = new Beer ({
+    //             id: data[0].id,
+    //             name: data[0].name,
+    //             description: data[0].description
+    //         })
+
+    //             console.log(beer)
+
+    //             beer.save()
+    //     }
+    // })
     res.status(201).json({
         message: 'Sucessfully retrieved data from frontend' 
     })
