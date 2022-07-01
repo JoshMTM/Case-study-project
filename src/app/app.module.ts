@@ -28,7 +28,7 @@ import { DatabaseCheckComponent } from './components/database-check/database-che
     AppComponent,
     SearchBarComponent,
     HomeComponent,
-    FavouritesComponent
+    FavouritesComponent,
     SubscribeButtonComponent,
     DatabaseCheckComponent
   ],
