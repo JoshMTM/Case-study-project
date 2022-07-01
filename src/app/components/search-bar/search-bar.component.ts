@@ -42,4 +42,11 @@ export class SearchBarComponent implements OnInit {
     this.router.navigate(['search', form.value.search])
   }
 
+  onClick() {
+    // this.http.get<any>('http://localhost:3000/api/beers')
+    // .subscribe((data) => {
+    //   console.log(data)
+    // })
+  }
+
 }
