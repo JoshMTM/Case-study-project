@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { HttpService } from 'src/app/services/http.service';
 
 
 
@@ -13,23 +14,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchBarComponent implements OnInit {
   searchInput = ''
-  searchResult = ''
 
   onSearch() {
-    const searchResult = {
+    let searchResult = {
       content: this.searchInput
     }
     console.log(searchResult)
-    this.http.post<{message: string}>("http://localhost:3000/api/beers", searchResult).subscribe((responseData) => {
-      console.log(responseData.message)
-    })
-    // this.http.get('http://localhost:3000/api/beers')
-    // .subscribe((beerData) => {})
+    this.httpService.saveToDatabase(this.searchInput)
   }
 
   
   
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.http.get<any>('http://localhost:3000/api/beers')

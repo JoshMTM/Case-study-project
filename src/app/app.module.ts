@@ -15,10 +15,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+
 import { HomeComponent } from './components/home/home.component'; 
 import { FavouritesComponent } from './components/favourites/favourites.component'; 
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptors';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptors';
+import { SubscribeButtonComponent } from './components/subscribe-button/subscribe-button.component';
+import { DatabaseCheckComponent } from './components/database-check/database-check.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptors';
     SearchBarComponent,
     HomeComponent,
     FavouritesComponent
+    SubscribeButtonComponent,
+    DatabaseCheckComponent
   ],
   imports: [
     CommonModule,

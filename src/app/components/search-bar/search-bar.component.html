@@ -1,13 +1,17 @@
+<!-- Header and search bar -->
+
 <div class="search-container">
     <form class="search-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
         <span class="logo" routerLink="/">BEER-UP</span>
     </form>
+
 
     <ul>
         <li>
             <a routerLink="/favourites" (click)="onClick()" > Favourite Beers list</a>
         </li>
     </ul>
+
     <input type="text" name="search" placeholder="Search 1000+ Beers locally and international" class="search-input" [(ngModel)]="searchInput"/>
     <button class="search-button" (click)="onSearch()">
         Search
