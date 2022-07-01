@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 
   
   goToPage(pageName:string):void{
-    this.router.navigate([`${pageName}`]);
+    this.router.navigate([`/details`]);
   }
   
   // searchBeers(sort: string, search?: string): void {

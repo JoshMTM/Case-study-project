@@ -19,10 +19,13 @@
             <img
             *ngIf="beer.image_url"
             src="{{ beer.image_url }}" 
-            alt="thumbnail">
+            alt="thumbnail"
+            class="beer-thumbnail"
             (click)="goToPage('details')"
             (click)="onSelected()"
-            class="beer-thumbnail"/>
+            />
+            
+           
 
             <p *ngIf="!beer.image_url">No Image</p>
 
