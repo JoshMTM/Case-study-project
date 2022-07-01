@@ -9,6 +9,7 @@ import {  Beer } from '../models';
   providedIn: 'root'
 })
 export class HttpService {
+  static getBeerList: any;
 
   constructor(private http: HttpClient) { }
 
