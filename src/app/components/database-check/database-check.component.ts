@@ -8,15 +8,16 @@ import { Beer } from 'src/app/models';
   styleUrls: ['./database-check.component.scss']
 })
 export class DatabaseCheckComponent implements OnInit {
-  public beers: Array<Beer> | undefined;
+  public beers: any | undefined;
 
   constructor(
     private http: HttpClient
   ) {}
-  ngOnInit(): void {
+  ngOnInit() {
     this.http.get<any>('http://localhost:3000/api/beers')
-    .subscribe((beerList: Array<Beer>) => {
+    .subscribe((beerList) => {
       this.beers = beerList;
       console.log(this.beers)
+      return this.beers;
     })
   }}
