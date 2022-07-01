@@ -1,5 +1,9 @@
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Router} from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Beer } from 'src/app/models';
+import { HttpService } from 'src/app/services/http.service'; 
 
 @Component({
   selector: 'app-home',
@@ -9,9 +13,30 @@ import {Router} from '@angular/router';
 export class HomeComponent implements OnInit {
   public sort: string | undefined;
   @Output() beerSelected = new EventEmitter<void>();
-  constructor(private router: Router) { }
+ 
+  public beers: Array<Beer> | undefined;
+
+  constructor(
+    private router: Router,
+    private  httpService: HttpService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    // this.activatedRoute.params.subscribe((params: Params) => {
+    //   if (params['beer-search']) {
+    //     this.searchBeers('metacrit', params['beer-search']);
+    //   } else {
+    //     this.searchBeers('metacrit');
+    //   }
+    // })
+
+    this.httpService
+    .getBeerList('metacrit')
+    .subscribe((beerList: Array<Beer>) => {
+      this.beers = beerList;
+      console.log(this.beers);
+    })
   }
 
   
@@ -19,6 +44,15 @@ export class HomeComponent implements OnInit {
     this.router.navigate([`${pageName}`]);
   }
   
+  // searchBeers(sort: string, search?: string): void {
+  //   this.httpService
+  //   .getBeerList(sort, search)
+  //   .subscribe((beerList: Array<Beer>) => {
+  //     this.beers = beerList.results;
+  //     console.log(beerList);
+  //   })
+  // }
+
 
 
   onSelected(){
