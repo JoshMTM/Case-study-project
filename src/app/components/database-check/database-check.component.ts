@@ -16,7 +16,7 @@ export class DatabaseCheckComponent implements OnInit {
   ngOnInit() {
     this.http.get<any>('http://localhost:3000/api/beers')
     .subscribe((beerList) => {
-      this.beers = beerList;
+      this.beers = beerList.beers;
       console.log(this.beers)
       return this.beers;
     })

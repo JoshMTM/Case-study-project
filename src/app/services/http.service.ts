@@ -34,19 +34,29 @@ export class HttpService {
 
     this.http.get<any>(`${env.BASE_URL}/beers?beer_name=${search}`).subscribe(data => {
       if (data) {
-        const beer = { 
+        const beer = {
           id: data[0].id,
-          image_url : data[0].image_url, 
-          name: data[0].name, 
-          description: data[0].description, 
+          image_url : data[0].image_url,
+          name: data[0].name,
+          description: data[0].description,
         }
         this.http.post<{message: string}>("http://localhost:3000/api/beers", beer).subscribe((responseData) => {
         console.log(responseData.message)})
       }
 
-      else { 
+      else {
         console.log('Beer not found!')
       }
+    })
+  }
+
+  retrieveFromDatabase() {
+    let savedBeers: Array<any> = [];
+    this.http.get<any>('http://localhost:3000/api/beers')
+    .subscribe((beerList) => {
+      savedBeers = beerList.beers;
+      console.log(savedBeers)
+      return savedBeers;
     })
   }
 }
