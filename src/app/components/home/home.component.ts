@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Beer } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service'; 
+import { DetailsComponent } from '../details/details.component';
 
 @Component({
   selector: 'app-home',

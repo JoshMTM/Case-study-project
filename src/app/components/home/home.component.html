@@ -16,15 +16,19 @@
     <ng-container *ngFor="let beer of beers">
     <div class="beer">
         <div class="beer-thumb-container">
-            <img
+          <img
             *ngIf="beer.image_url"
             src="{{ beer.image_url }}" 
             alt="thumbnail"
             class="beer-thumbnail"
             (click)="goToPage('details')"
             (click)="onSelected()"
+            routerLinkActive="active"
+            routerLink="/details"
             />
-            
+           
+
+           
            
 
             <p *ngIf="!beer.image_url">No Image</p>

@@ -10,20 +10,25 @@
     </ul>
 </body>
 </html> -->
+<html>
 
+<body>
 
 <div class="beers">
-    <ng-container *ngFor="let beer of beers; let i = index">
-        <div class="beer">
+    <ng-container >
+        <div class="beer" >
+           
+           
          <p>{{beerName}}</p>
          <p>{{beerDescription}}</p>
          <p>{{beerTagline}}</p>
          <p>{{beer_first_brewed}}</p>
-
         </div>
         
     </ng-container>
-
+<router-outlet></router-outlet>
 
 
 </div>
+</body>
+</html> 

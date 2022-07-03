@@ -23,7 +23,8 @@ export class DetailsComponent implements OnInit {
 
   
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService,
+              private router:Router) { }
   ngOnInit(): void {
     this.httpService
     .getBeerList('metacrit')
@@ -32,9 +33,6 @@ export class DetailsComponent implements OnInit {
       console.log(this.beers);
     })
   }
-
-
- 
   }
 
   
