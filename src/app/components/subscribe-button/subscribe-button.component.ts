@@ -22,7 +22,9 @@ export class SubscribeButtonComponent {
   ) {}
 
   @Output() enableSwitchChange = new EventEmitter<boolean>();
-  @Input() enableSwitch: Boolean = false;
+  @Input() enableSwitch: boolean = false;
+
+
 
   // This needs to check with database-check component whether the beer is already saved or not (by the id)
   // @Input() enableSwitch: Boolean = this.beer.some(x => x.id === this.beers);
@@ -37,7 +39,7 @@ export class SubscribeButtonComponent {
     else {
       console.log("beer unsaved")
     }
-    this.enableSwitchChange.emit(Boolean(this.enableSwitch.toString()));
+    this.enableSwitchChange.emit(this.enableSwitch);
   }
 
 // This portion of code is not being used at the moment

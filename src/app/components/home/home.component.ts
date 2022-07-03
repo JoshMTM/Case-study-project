@@ -26,8 +26,12 @@ export class HomeComponent implements OnInit {
       console.log(this.beers);
     })
   }
-  
 
+  switchToggled(id: number, state: boolean) {
+    console.log(`Switch toggled. ${id} = ${state}`)
+  }
 
-
+  isSaved(id: number): boolean {
+    return false;
+  }
 }
