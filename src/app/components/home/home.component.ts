@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Router} from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Beer } from 'src/app/models';
-import { HttpService } from 'src/app/services/http.service';
+import { HttpService } from 'src/app/services/http.service'; 
+import { DetailsComponent } from '../details/details.component';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +13,13 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class HomeComponent implements OnInit {
   public sort: string | undefined;
+  @Output() beerSelected = new EventEmitter<void>();
+ 
   public beers: Array<Beer> | undefined;
   public savedBeers: any = [];
 
   constructor(
+    private router: Router,
     private  httpService: HttpService,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -41,6 +47,21 @@ export class HomeComponent implements OnInit {
     console.log(`Switch toggled. ${id} = ${state}`)
   }
 
+
+  
+  goToPage(pageName:string):void{
+    this.router.navigate([`/details`]);
+  }
+  
+  // searchBeers(sort: string, search?: string): void {
+  //   this.httpService
+  //   .getBeerList(sort, search)
+  //   .subscribe((beerList: Array<Beer>) => {
+  //     this.beers = beerList.results;
+  //     console.log(beerList);
+  //   })
+  // }
+=======
   isSaved(id: number) {
     // console.log('BEERS HERE', this.savedBeers)
     // const savedBeers = this.httpService.retrieveFromDatabase();
@@ -49,11 +70,18 @@ export class HomeComponent implements OnInit {
     //   throw new Error('No beers found!')
     // }
 
+
     return this.savedBeers.some((beer: Beer) => {
       // console.log('This is a beer', beer)
 
+
+
+  onSelected(){
+    this.beerSelected.emit();
+=======
       return beer.id === id
     });
+
   }
 }
 
