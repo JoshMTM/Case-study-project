@@ -48,6 +48,17 @@ export class FavouritesComponent implements OnInit {
 
   }
 
+  switchToggled(id: number,name: string, state: boolean) {
+
+    console.log(`Switch toggled. ${id} = ${state}`)
+  }
+
+  isSaved(id: number) {
+    // const savedBeers = this.httpService.retrieveFromDatabase();
+    // console.log(this.savedBeers);
+    return true;
+    // return savedBeers.some(x => x.id === id);
+  }
 
 
 }

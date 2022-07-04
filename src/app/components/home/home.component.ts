@@ -35,7 +35,9 @@ export class HomeComponent implements OnInit {
   }
 
   switchToggled(id: number,name: string, state: boolean) {
+    if (state) {
     this.httpService.saveToDatabase(name);
+    }
     console.log(`Switch toggled. ${id} = ${state}`)
   }
 
