@@ -51,10 +51,9 @@ export class HttpService {
   }
 
   retrieveFromDatabase() {
-    let savedBeers: Array<any> = [];
     this.http.get<any>('http://localhost:3000/api/beers')
     .subscribe((beerList) => {
-      savedBeers = beerList.beers;
+      const savedBeers: Array<any> = beerList.beers;
       console.log(savedBeers)
       return savedBeers;
     })
