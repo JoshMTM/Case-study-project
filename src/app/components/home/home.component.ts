@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   isSaved(id: number) {
-    console.log('BEERS HERE', this.savedBeers)
+    // console.log('BEERS HERE', this.savedBeers)
     // const savedBeers = this.httpService.retrieveFromDatabase();
     // console.log(this.savedBeers);
     // if (!this.savedBeers) {
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
     // }
 
     return this.savedBeers.some((beer: Beer) => {
-      console.log('This is a beer', beer)
+      // console.log('This is a beer', beer)
 
       return beer.id === id
     });
