@@ -30,7 +30,7 @@
                 <img src="https://www.amsterdamcareerdays.nl/wp-content/uploads/2020/12/Heineken-Logo1.png"
                 alt="slug"
                 class="beer-platform">
-                <app-subscribe-button [enableSwitch]="isSaved(beer.id)" (enableSwitchChange)="switchToggled(beer.id, $event)"></app-subscribe-button>
+                <app-subscribe-button [enableSwitch]="isSaved(beer.id)" (enableSwitchChange)="switchToggled(beer.id,beer.name, $event)"></app-subscribe-button>
             </div>
     </div>
 </div>
