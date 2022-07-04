@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   {
@@ -8,8 +9,13 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: 'search',
+    //path: 'search/:beer-search',
+    component: SearchComponent,
+  },
+  {
     path: 'search/:beer-search',
-    component: HomeComponent,
+    component: SearchComponent,
   }
 ];
 
