@@ -43,9 +43,9 @@ export class HomeComponent implements OnInit {
     console.log('BEERS HERE', this.savedBeers)
     // const savedBeers = this.httpService.retrieveFromDatabase();
     // console.log(this.savedBeers);
-    if (!this.savedBeers) {
-      throw new Error('No beers found!')
-    }
+    // if (!this.savedBeers) {
+    //   throw new Error('No beers found!')
+    // }
 
     return this.savedBeers.some((beer: Beer) => {
       console.log('This is a beer', beer)
