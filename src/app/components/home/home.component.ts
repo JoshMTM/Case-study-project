@@ -11,7 +11,7 @@ import { HttpService } from 'src/app/services/http.service';
 export class HomeComponent implements OnInit {
   public sort: string | undefined;
   public beers: Array<Beer> | undefined;
-  public savedBeers: Array<any> | undefined;
+  public savedBeers: any = [];
 
   constructor(
     private  httpService: HttpService,
@@ -24,12 +24,14 @@ export class HomeComponent implements OnInit {
     .getBeerList('metacrit')
     .subscribe((beerList: Array<Beer>) => {
       this.beers = beerList;
-      console.log(this.beers);
+      console.log(' THE BEERS', this.beers);
     })
 
-
-
-
+    this.httpService.retrieveFromDatabase()
+    .subscribe((beers: any) => {
+        this.savedBeers = beers.beers;
+        console.log(this.savedBeers)
+      });
   }
 
   switchToggled(id: number,name: string, state: boolean) {
@@ -38,9 +40,18 @@ export class HomeComponent implements OnInit {
   }
 
   isSaved(id: number) {
+    console.log('BEERS HERE', this.savedBeers)
     // const savedBeers = this.httpService.retrieveFromDatabase();
     // console.log(this.savedBeers);
-    return false;
-    // return savedBeers.some(x => x.id === id);
+    if (!this.savedBeers) {
+      throw new Error('No beers found!')
+    }
+
+    return this.savedBeers.some((beer: Beer) => {
+      console.log('This is a beer', beer)
+
+      return beer.id === id
+    });
   }
 }
+

@@ -50,12 +50,12 @@ export class HttpService {
     })
   }
 
-  retrieveFromDatabase() {
-    this.http.get<any>('http://localhost:3000/api/beers')
-    .subscribe((beerList) => {
-      const savedBeers: Array<any> = beerList.beers;
-      console.log(savedBeers)
-      return savedBeers;
-    })
-  }
+  retrieveFromDatabase(): any {
+    return this.http.get<any>('http://localhost:3000/api/beers')
+    // .subscribe((beerList) => {
+    //   const savedBeers: Array<any> = beerList.beers;
+    //   console.log(savedBeers)
+    //   return savedBeers;
+    // })
+}
 }
