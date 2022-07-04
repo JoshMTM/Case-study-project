@@ -27,12 +27,12 @@ export class FavouritesComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get<any>('http://localhost:3000/api/beers')
-    .subscribe((beerList) => {
+    .subscribe(async (beerList) => {
       this.beers1 = beerList;
 
-      console.log(Object.keys(this.beers1))
-      console.log(this.beers1)
-      console.log(this.beers1.beers[0])
+      // console.log(Object.keys(this.beers1))
+      // console.log(this.beers1)
+      // console.log(this.beers1.beers[0])
 
       // for (var key in this.beers1) {
       //   if (this.beers1.hasOwnProperty(key)) {
