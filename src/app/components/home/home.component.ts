@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   @Output() beerSelected = new EventEmitter<void>();
  
   public beers: Array<Beer> | undefined;
+  public savedBeers: any = [];
 
   constructor(
     private router: Router,
@@ -24,21 +25,26 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.activatedRoute.params.subscribe((params: Params) => {
-    //   if (params['beer-search']) {
-    //     this.searchBeers('metacrit', params['beer-search']);
-    //   } else {
-    //     this.searchBeers('metacrit');
-    //   }
-    // })
 
     this.httpService
     .getBeerList('metacrit')
     .subscribe((beerList: Array<Beer>) => {
       this.beers = beerList;
-      console.log(this.beers);
+      console.log(' THE BEERS', this.beers);
     })
+
+    this.httpService.retrieveFromDatabase()
+    .subscribe((beers: any) => {
+        this.savedBeers = beers.beers;
+        console.log(this.savedBeers)
+      });
   }
+
+  switchToggled(id: number,name: string, state: boolean) {
+    this.httpService.saveToDatabase(name);
+    console.log(`Switch toggled. ${id} = ${state}`)
+  }
+
 
   
   goToPage(pageName:string):void{
@@ -53,10 +59,27 @@ export class HomeComponent implements OnInit {
   //     console.log(beerList);
   //   })
   // }
+=======
+  isSaved(id: number) {
+    console.log('BEERS HERE', this.savedBeers)
+    // const savedBeers = this.httpService.retrieveFromDatabase();
+    // console.log(this.savedBeers);
+    if (!this.savedBeers) {
+      throw new Error('No beers found!')
+    }
+
+
+    return this.savedBeers.some((beer: Beer) => {
+      console.log('This is a beer', beer)
 
 
 
   onSelected(){
     this.beerSelected.emit();
+=======
+      return beer.id === id
+    });
+
   }
 }
+

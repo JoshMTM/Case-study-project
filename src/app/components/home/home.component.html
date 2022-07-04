@@ -18,7 +18,7 @@
         <div class="beer-thumb-container">
           <img
             *ngIf="beer.image_url"
-            src="{{ beer.image_url }}" 
+            src="{{ beer.image_url }}"
             alt="thumbnail"
             class="beer-thumbnail"
             (click)="goToPage('details')"
@@ -37,10 +37,15 @@
         <div class="beer-description">
             <p class="beer-name">{{beer.name}}</p>
             <div class="beer-platforms">
-                <img src="https://www.amsterdamcareerdays.nl/wp-content/uploads/2020/12/Heineken-Logo1.png" 
+                <img src="https://www.amsterdamcareerdays.nl/wp-content/uploads/2020/12/Heineken-Logo1.png"
                 alt="slug"
+
                 class="beer-platform"
                 (click)="goToPage('details')">
+=======
+                class="beer-platform">
+                <app-subscribe-button [enableSwitch]="isSaved(beer.id)" (enableSwitchChange)="switchToggled(beer.id,beer.name, $event)"></app-subscribe-button>
+
             </div>
     </div>
 </div>
