@@ -19,23 +19,37 @@
     <ng-container *ngFor="let beer of beers">
     <div class="beer" (click)="openBeerDetails(beer.id)">
         <div class="beer-thumb-container">
-            <img
+          <img
             *ngIf="beer.image_url"
             src="{{ beer.image_url }}"
             alt="thumbnail"
             class="beer-thumbnail"
+            (click)="goToPage('details')"
+            routerLinkActive="active"
+            routerLink="/details"
             />
+           
+
+           
+           
+
             <p *ngIf="!beer.image_url">No Image</p>
+
         </div>
         <div class="beer-description">
             <p class="beer-name">{{beer.name}}</p>
             <div class="beer-platforms">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrTYDbIqEOgaF5RfbK6zxyGz1RqNE63Efrw&usqp=CAU"
                 alt="slug"
+
+                class="beer-platform"
+                (click)="goToPage('details')">
+=======
                 class="beer-platform">
-                <app-subscribe-button [enableSwitch]="isSaved(beer.id)" (enableSwitchChange)="switchToggled(beer.id, $event)"></app-subscribe-button>
+                <app-subscribe-button [enableSwitch]="isSaved(beer.id)" (enableSwitchChange)="switchToggled(beer.id,beer.name, $event)"></app-subscribe-button>
+
             </div>
+        </div>
     </div>
-</div>
-</ng-container>
+    </ng-container>
 </div>

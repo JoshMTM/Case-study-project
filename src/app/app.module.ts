@@ -16,19 +16,31 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
-import { HomeComponent } from './components/home/home.component'; 
+import { FooterComponent } from './components/footer/footer.component'; 
+import { HomeComponent } from './components/home/home.component';
+import { DetailsComponent } from './components/details/details.component';
+
 import { FavouritesComponent } from './components/favourites/favourites.component'; 
+
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptors';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptors';
 import { SubscribeButtonComponent } from './components/subscribe-button/subscribe-button.component';
+import { SearchComponent } from './components/search/search.component';
+
 import { DatabaseCheckComponent } from './components/database-check/database-check.component';
 import { DetailsComponent } from './components/details/details.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
+    FooterComponent,
     HomeComponent,
+    DetailsComponent,
+    HomeComponent,
+    // SubscribeButtonComponent,
+    SearchComponent,
     FavouritesComponent,
     SubscribeButtonComponent,
     DatabaseCheckComponent,

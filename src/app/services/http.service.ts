@@ -1,20 +1,35 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { response } from 'express';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import {environment as env } from 'src/environments/environment';
+import { EventEmitter } from '@angular/core';
 import {  Beer } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+<<<<<<< HEAD
   getBeerDetails //localhost:3000/api/beers", beer).subscribe((responseData) => {
     (id: number) {
       throw new Error('Method not implemented.');
   }
+=======
+  Beers: any = []
+  searchUpdated: BehaviorSubject<string>
+  static getBeerList: any;
+>>>>>>> 78218bf9d9b2e107a8004aa7cd5c5fa68a8685aa
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) { 
+    this.searchUpdated = new BehaviorSubject('')
+  }
+
+  passSearchQuery(search: string) {
+    this.searchUpdated.next(search)
+  }
 
   getBeerList(
     ordering: string,
@@ -30,7 +45,36 @@ export class HttpService {
     })
   }
 
+  // Retrieve the home page beers from backend API
+  getBeerList2() {
+    return this.http.get<any>("http://localhost:3000/api/getbeers")
+  }
+
   // Call in order to save beer to database
+  saveToDatabaseVlad(id: number) {
+    const idObject = {
+      content: id
+    }
+    this.http.post<any>("http://localhost:3000/api/beers", idObject).subscribe( (data) => {
+      console.log(data)
+    })
+  }
+
+  // Search for beer/beers in API 
+  searchBeer(search: string) {
+    const searchObject = {
+      content: search
+    }
+    console.log(searchObject)
+    return this.http.post<any>("http://localhost:3000/api/getbeers", searchObject)
+  }
+
+  // Delete beer from database by Id
+  deleteBeer(id: number) {
+    this.http.delete<any>("http://localhost:3000/api/beers/" + id).subscribe( (data) => {
+      console.log(data)
+    })
+  }
 
   saveToDatabase(search: string) {
 
@@ -54,12 +98,12 @@ export class HttpService {
     })
   }
 
-  retrieveFromDatabase() {
-    this.http.get<any>('http://localhost:3000/api/beers')
-    .subscribe((beerList) => {
-      const savedBeers: Array<any> = beerList.beers;
-      console.log(savedBeers)
-      return savedBeers;
-    })
-  }
+  retrieveFromDatabase(): any {
+    return this.http.get<any>('http://localhost:3000/api/beers')
+    // .subscribe((beerList) => {
+    //   const savedBeers: Array<any> = beerList.beers;
+    //   console.log(savedBeers)
+    //   return savedBeers;
+    // })
+}
 }

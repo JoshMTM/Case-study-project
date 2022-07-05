@@ -1,8 +1,11 @@
+
+import {FormsModule} from '@angular/forms';
 import { Component, Input,Output, EventEmitter, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Beer } from 'src/app/models';
 import { DatabaseCheckComponent } from '../database-check/database-check.component';
 import { HomeComponent } from '../home/home.component';
+
 
 @Component({
   selector: 'app-subscribe-button',
