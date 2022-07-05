@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,6 +30,13 @@ export class SearchBarComponent implements OnInit {
   
   onSubmit(form: NgForm) {
     this.router.navigate(['search', form.value.search])
+  }
+
+  onClick() {
+    this.http.get<any>('http://localhost:3000/api/beers')
+    .subscribe((data) => {
+      console.log(data)
+    })
   }
 
 }
