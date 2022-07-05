@@ -1,48 +1,21 @@
-<div class="details" *ngIf="show">
-    <div class="beer-banner">
-        <img 
-            src="{{beer[0].image_url}}" 
-            class="beer-banner-img"
-            alt="beer image"
-        >
-    </div>
-    <div class="beer-content">
-        <div class="details-wrapper">
-            <div class="beer-header">
-                <h1 class="title">First Beer</h1>
-                <h1 class="title">{{beer[0].name}}</h1>
-                <h2 class="beer-header-released-date">Released: {{beer[0].first_brewed}}</h2>
-                <p class="contributed">Contributed by: {{beer[0].contributed_by}}</p>
-                <p class="beer-header-type">
-                    <span>BROWN</span>
-                </p>
-                <div class="ingredients"
-                *ngFor="let pairing of beer[0].food_pairing"
-                >
-                <h3>Great to pair with:</h3>
-                <p>{{ pairing }}</p>
-                </div>
-                <div class="beer-gauge">
-                    <mwl-gauge
-                    class="two"
-                    [max]="100"
-                    [dialStartAngle]="180"
-                    [dialEndAngle]="0"
-                    [value]="beerRating"
-                    [animated]="true"
-                    [color]="getColor"
-                    [animationDuration]="2"
-                    >
-
-                    </mwl-gauge>
-                    <a href=""
-                    class="beer-gauge-label"
-                    target="_blank">
-                    Rating
-                    </a>
-                </div>
-            </div>
-            <!-- material tabs -->
-        </div>
-    </div>
-</div>
+<div class="table-users" *ngIf="show">
+    <div class="header">Users</div>
+    
+    <table cellspacing="0">
+       <tr>
+          <th>Picture</th>
+          <th>Name</th>
+          <th>First Brewed</th>
+          <th>Food Pairing</th>
+          <th width="230">Description</th>
+       </tr>
+ 
+       <tr>
+          <td><img src="{{beer[0].image_url}}" alt="" /></td>
+          <td>{{ beer[0].name }}</td>
+          <td>{{beer[0].first_brewed}}</td>
+          <td>{{beer[0].food_pairing}}</td>
+          <td>{{beer[0].description}}</td>
+       </tr>
+    </table>
+ </div>

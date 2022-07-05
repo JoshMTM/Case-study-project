@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -14,7 +15,7 @@ export class SearchComponent implements OnInit {
   public savedBeers: any | undefined;
 
 
-  public constructor(private httpService: HttpService) { 
+  public constructor(private httpService: HttpService, private router: Router) { 
     this.httpService.searchUpdated.subscribe((value) => {
       console.log('subscribing: ', value);
       this.onSearch(value);
@@ -48,6 +49,11 @@ export class SearchComponent implements OnInit {
       return beer.id === id
     })
 
+  }
+
+  goToPage(pageName:string, id: number):void{
+    this.httpService.passID(id)
+    this.router.navigate([`/details`]);
   }
 
   public async onSearch(search: string) {

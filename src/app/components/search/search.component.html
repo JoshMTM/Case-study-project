@@ -8,6 +8,7 @@
                 src="{{ beer.image_url }}"
                 alt="thumbnail"
                 class="beer-thumbnail"
+                (click)="goToPage('details', beer.id)"
                 />
                 <p *ngIf="!beer.image_url">No Image</p>
             </div>

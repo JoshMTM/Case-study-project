@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private  httpService: HttpService,
+    private httpService: HttpService,
     private activatedRoute: ActivatedRoute
   ) {
     this.httpService

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Beer } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 import { HttpClient } from '@angular/common/http';
@@ -17,16 +17,18 @@ export class FavouritesComponent implements OnInit {
   constructor(
     private  httpService: HttpService,
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient
-  ) { }
-  
-
-  ngOnInit(): void {
+    private http: HttpClient,
+    private router: Router
+  ) { 
     this.httpService.getBeerDatabase()
     .subscribe( async (beerList) => {
       this.beers = beerList.data
       console.log(this.beers)
     })
+  }
+  
+
+  ngOnInit(): void {
   }
 
   switchToggled(id: number,name: string, state: boolean) {
@@ -41,6 +43,11 @@ export class FavouritesComponent implements OnInit {
 
   isSaved(id: number) {
     return true;
+  }
+
+  goToPage(pageName:string, id: number):void{
+    this.httpService.passID(id)
+    this.router.navigate([`/details`]);
   }
 
 
