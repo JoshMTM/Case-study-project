@@ -11,7 +11,7 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class DetailsComponent implements OnInit, OnDestroy {
 
-public beers: Array<Beer> | undefined;
+  public beers: Array<Beer> | undefined;
 
   beerRating = 0;
   beerId!: number;

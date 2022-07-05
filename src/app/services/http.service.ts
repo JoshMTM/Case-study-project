@@ -11,10 +11,6 @@ import {  Beer } from '../models';
   providedIn: 'root'
 })
 export class HttpService {
-  getBeerDetails //localhost:3000/api/beers", beer).subscribe((responseData) => {
-    (id: number) {
-      throw new Error('Method not implemented.');
-  }
   Beers: any = []
   searchUpdated: BehaviorSubject<string>
   static getBeerList: any;
@@ -28,19 +24,13 @@ export class HttpService {
     this.searchUpdated.next(search)
   }
 
-  // getBeerList(
-  //   ordering: string,
-  //   search?: string
-  // ): Observable<Array<Beer>> {
-  //   let params = new HttpParams().set('ordering', ordering);
+  
 
-  //   if (search) {
-  //     params = new HttpParams().set('ordering', ordering).set('search', search);
-  //   }
-  //   return this.http.get<Array<Beer>>(`${env.BASE_URL}/beers`, {
-  //     params: params,
-  //   })
-  // }
+  // retrieve beer by ID
+  getBeerDetails(id: number) {
+      return this.http.get<any>("http://localhost:3000/api/beers/" + id)
+  }
+
 
   // retrieve all the beers in the database
   getBeerDatabase(){
