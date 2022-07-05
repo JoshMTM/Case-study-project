@@ -4,7 +4,6 @@ import { Beer } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 import { HttpClient } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-favourites',
   templateUrl: './favourites.component.html',
@@ -13,8 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class FavouritesComponent implements OnInit {
 
   public sort: string | undefined;
-  public beers: Array<Beer> | undefined;
-  public beers1: any | undefined;
+  public beers: any | undefined;
   
   constructor(
     private  httpService: HttpService,
@@ -23,41 +21,26 @@ export class FavouritesComponent implements OnInit {
   ) { }
   
 
-
-
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:3000/api/beers')
-    .subscribe(async (beerList) => {
-      this.beers1 = beerList;
-
-      // console.log(Object.keys(this.beers1))
-      // console.log(this.beers1)
-      // console.log(this.beers1.beers[0])
-
-      // for (var key in this.beers1) {
-      //   if (this.beers1.hasOwnProperty(key)) {
-      //     console.log(key)
-      //   }
-    // }
-
+    this.httpService.getBeerDatabase()
+    .subscribe( async (beerList) => {
+      this.beers = beerList.data
+      console.log(this.beers)
     })
-    
-    // this.beers1 = [{image_url: "https://images.punkapi.com/v2/keg.png", name: "123"},
-    // {image_url: "https://images.punkapi.com/v2/keg.png", name: "123"}
-    // ]
-
   }
 
   switchToggled(id: number,name: string, state: boolean) {
-
+    if (state) {
+      this.httpService.saveToDatabaseVlad(id);
+      }
+      else {
+        this.httpService.deleteBeer(id)
+      }
     console.log(`Switch toggled. ${id} = ${state}`)
   }
 
   isSaved(id: number) {
-    // const savedBeers = this.httpService.retrieveFromDatabase();
-    // console.log(this.savedBeers);
     return true;
-    // return savedBeers.some(x => x.id === id);
   }
 
 

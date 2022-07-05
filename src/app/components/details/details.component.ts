@@ -11,6 +11,8 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class DetailsComponent implements OnInit, OnDestroy {
 
+public beers: Array<Beer> | undefined;
+
   beerRating = 0;
   beerId!: number;
   beer!: Beer;
@@ -23,9 +25,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
-      this.beerId = params['id'];
-      this.getBeerDetails(this.beerId);
+    this.httpService
+    .getBeerList()
+    .subscribe((beerList: any) => {
+      this.beers = beerList.data;
+      console.log(this.beers);
     })
   }
   

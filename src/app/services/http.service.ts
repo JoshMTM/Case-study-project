@@ -11,16 +11,13 @@ import {  Beer } from '../models';
   providedIn: 'root'
 })
 export class HttpService {
-<<<<<<< HEAD
   getBeerDetails //localhost:3000/api/beers", beer).subscribe((responseData) => {
     (id: number) {
       throw new Error('Method not implemented.');
   }
-=======
   Beers: any = []
   searchUpdated: BehaviorSubject<string>
   static getBeerList: any;
->>>>>>> 78218bf9d9b2e107a8004aa7cd5c5fa68a8685aa
 
 
   constructor(private http: HttpClient) { 
@@ -31,22 +28,27 @@ export class HttpService {
     this.searchUpdated.next(search)
   }
 
-  getBeerList(
-    ordering: string,
-    search?: string
-  ): Observable<Array<Beer>> {
-    let params = new HttpParams().set('ordering', ordering);
+  // getBeerList(
+  //   ordering: string,
+  //   search?: string
+  // ): Observable<Array<Beer>> {
+  //   let params = new HttpParams().set('ordering', ordering);
 
-    if (search) {
-      params = new HttpParams().set('ordering', ordering).set('search', search);
-    }
-    return this.http.get<Array<Beer>>(`${env.BASE_URL}/beers`, {
-      params: params,
-    })
+  //   if (search) {
+  //     params = new HttpParams().set('ordering', ordering).set('search', search);
+  //   }
+  //   return this.http.get<Array<Beer>>(`${env.BASE_URL}/beers`, {
+  //     params: params,
+  //   })
+  // }
+
+  // retrieve all the beers in the database
+  getBeerDatabase(){
+    return this.http.get<any>("http://localhost:3000/api/beers")
   }
 
   // Retrieve the home page beers from backend API
-  getBeerList2() {
+  getBeerList() {
     return this.http.get<any>("http://localhost:3000/api/getbeers")
   }
 
@@ -98,12 +100,5 @@ export class HttpService {
     })
   }
 
-  retrieveFromDatabase(): any {
-    return this.http.get<any>('http://localhost:3000/api/beers')
-    // .subscribe((beerList) => {
-    //   const savedBeers: Array<any> = beerList.beers;
-    //   console.log(savedBeers)
-    //   return savedBeers;
-    // })
-}
+
 }
