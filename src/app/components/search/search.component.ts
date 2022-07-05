@@ -11,6 +11,7 @@ export class SearchComponent implements OnInit {
   showResults : boolean = false
   noResults: boolean = false
   Beers: any = []
+  public savedBeers: any | undefined;
 
 
   public constructor(private httpService: HttpService) { 
@@ -18,10 +19,35 @@ export class SearchComponent implements OnInit {
       console.log('subscribing: ', value);
       this.onSearch(value);
     })
+    
+    this.httpService
+     .getBeerDatabase()
+     .subscribe( (beers: any) => {
+      this.savedBeers = beers.data
+    })
   };
 
 
   ngOnInit(): void {
+
+  }
+
+  switchToggled(id: number, name: string, state: boolean) {
+    if (state) {
+    this.httpService.saveToDatabaseVlad(id);
+    }
+    else {
+      this.httpService.deleteBeer(id)
+    }
+    console.log(`Switch toggled. ${id} = ${state}`)
+
+  }
+  
+  isSaved(id: number) {
+    return this.savedBeers.some((beer: any) => {
+      return beer.id === id
+    })
+
   }
 
   public async onSearch(search: string) {
