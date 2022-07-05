@@ -1,7 +1,10 @@
 <div class="filters">
     <mat-form-field>
         <mat-label>Sort</mat-label>
-        <mat-select panelClass="sort-select" [(ngModel)]="sort">
+        <mat-select 
+        panelClass="sort-select" 
+        [(ngModel)]="sort"
+        >
             <mat-option value="name">Name</mat-option>
             <mat-option value="origin">Origin</mat-option>
             <mat-option value="-added">Added</mat-option>
@@ -14,7 +17,7 @@
 
 <div class="beers">
     <ng-container *ngFor="let beer of beers">
-    <div class="beer">
+    <div class="beer" (click)="openBeerDetails(beer.id)">
         <div class="beer-thumb-container">
             <img
             *ngIf="beer.image_url"
@@ -27,7 +30,7 @@
         <div class="beer-description">
             <p class="beer-name">{{beer.name}}</p>
             <div class="beer-platforms">
-                <img src="https://www.amsterdamcareerdays.nl/wp-content/uploads/2020/12/Heineken-Logo1.png"
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrTYDbIqEOgaF5RfbK6zxyGz1RqNE63Efrw&usqp=CAU"
                 alt="slug"
                 class="beer-platform">
                 <app-subscribe-button [enableSwitch]="isSaved(beer.id)" (enableSwitchChange)="switchToggled(beer.id, $event)"></app-subscribe-button>

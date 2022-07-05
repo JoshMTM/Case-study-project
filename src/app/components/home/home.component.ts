@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Beer } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -14,22 +14,18 @@ export class HomeComponent implements OnInit {
   public savedBeers: Array<any> | undefined;
 
   constructor(
-    private  httpService: HttpService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private httpService: HttpService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
     this.httpService
-    .getBeerList('metacrit')
+    .getBeerList('released')
     .subscribe((beerList: Array<Beer>) => {
       this.beers = beerList;
       console.log(this.beers);
     })
-
-
-
-
   }
 
   switchToggled(id: number, state: boolean) {
@@ -41,5 +37,9 @@ export class HomeComponent implements OnInit {
     // console.log(this.savedBeers);
     return false;
     // return savedBeers.some(x => x.id === id);
+  }
+
+  openBeerDetails(id: number): void {
+    this.router.navigate(['details', id])
   }
 }
