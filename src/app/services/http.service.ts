@@ -13,21 +13,29 @@ import {  Beer } from '../models';
 export class HttpService {
   Beers: any = []
   searchUpdated: BehaviorSubject<string>
+  idUpdated: BehaviorSubject<number>
+
   static getBeerList: any;
 
 
   constructor(private http: HttpClient) { 
     this.searchUpdated = new BehaviorSubject('')
+    this.idUpdated = new BehaviorSubject(0)
   }
 
   passSearchQuery(search: string) {
     this.searchUpdated.next(search)
   }
 
+  passID(id: number) {
+    this.idUpdated.next(id)
+  }
+
+
   
 
   // retrieve beer by ID
-  getBeerDetails(id: number) {
+  getBeerById(id: number) {
       return this.http.get<any>("http://localhost:3000/api/beers/" + id)
   }
 
@@ -65,28 +73,6 @@ export class HttpService {
   deleteBeer(id: number) {
     this.http.delete<any>("http://localhost:3000/api/beers/" + id).subscribe( (data) => {
       console.log(data)
-    })
-  }
-
-  saveToDatabase(search: string) {
-
-    search = search.toLowerCase().replace(/ /g, '_')
-
-    this.http.get<any>(`${env.BASE_URL}/beers?beer_name=${search}`).subscribe(data => {
-      if (data) {
-        const beer = {
-          id: data[0].id,
-          image_url : data[0].image_url,
-          name: data[0].name,
-          description: data[0].description,
-        }
-        this.http.post<{message: string}>("http://localhost:3000/api/beers", beer).subscribe((responseData) => {
-        console.log(responseData.message)})
-      }
-
-      else {
-        console.log('Beer not found!')
-      }
     })
   }
 
