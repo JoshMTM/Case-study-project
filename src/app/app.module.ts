@@ -28,7 +28,6 @@ import { SubscribeButtonComponent } from './components/subscribe-button/subscrib
 import { SearchComponent } from './components/search/search.component';
 
 import { DatabaseCheckComponent } from './components/database-check/database-check.component';
-import { DetailsComponent } from './components/details/details.component';
 
 
 @NgModule({
@@ -44,7 +43,6 @@ import { DetailsComponent } from './components/details/details.component';
     FavouritesComponent,
     SubscribeButtonComponent,
     DatabaseCheckComponent,
-    DetailsComponent
   ],
   imports: [
     CommonModule,

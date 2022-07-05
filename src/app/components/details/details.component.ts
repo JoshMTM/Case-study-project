@@ -33,17 +33,17 @@ public beers: Array<Beer> | undefined;
     })
   }
   
-  getBeerDetails(id: number): void {
-    this.beerSub = this.httpService
-    .getBeerDetails(id)
-    .subscribe((beerResp: Beer) => {
-      this.beer = beerResp;
+  // getBeerDetails(id: number): void {
+  //   this.beerSub = this.httpService
+  //   .getBeerDetails(id)
+  //   .subscribe((beerResp: Beer) => {
+  //     this.beer = beerResp;
 
-      setTimeout(() => {
-        this.beerRating = this.beer.rating;
-      }, 1000);
-    });
-  }
+  //     setTimeout(() => {
+  //       this.beerRating = this.beer.rating;
+  //     }, 1000);
+  //   });
+  // }
 
 
   getColor(value: number): string {

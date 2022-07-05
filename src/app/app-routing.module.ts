@@ -5,7 +5,6 @@ import { FavouritesComponent } from './components/favourites/favourites.componen
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 
-import { DetailsComponent } from './components/details/details.component';
 
 const routes: Routes = [
 
@@ -29,18 +28,12 @@ const routes: Routes = [
   {
     path: 'favourites',
     component: FavouritesComponent
-<<<<<<< HEAD
   },
 
  { 
   path: "details/:id",
   component: DetailsComponent
 }
-=======
-
-  }
-
->>>>>>> 78218bf9d9b2e107a8004aa7cd5c5fa68a8685aa
 ];
 
 @NgModule({
