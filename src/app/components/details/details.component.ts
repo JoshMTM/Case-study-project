@@ -13,7 +13,6 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class DetailsComponent implements OnInit {
   
-  
   public beers: Array<Beer> | undefined;
 
   beerName: string='params.name';
@@ -25,11 +24,12 @@ export class DetailsComponent implements OnInit {
 
   constructor(private httpService: HttpService,
               private router:Router) { }
+
   ngOnInit(): void {
     this.httpService
-    .getBeerList('metacrit')
-    .subscribe((beerList: Array<Beer>) => {
-      this.beers = beerList;
+    .getBeerList()
+    .subscribe((beerList: any) => {
+      this.beers = beerList.data;
       console.log(this.beers);
     })
   }

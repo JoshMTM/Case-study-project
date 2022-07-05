@@ -27,67 +27,46 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   // this.httpService
-   // .getBeerList2()
-   // .subscribe( (beerList: any) => { 
-   //  this.beers = beerList.data;
-   //   console.log(this.beers);
+   this.httpService
+   .getBeerList()
+   .subscribe( (beerList: any) => { 
+    this.beers = beerList.data;
+     console.log(this.beers);
+   })
 
-    this.httpService
-    .getBeerList('metacrit')
-    .subscribe((beerList: Array<Beer>) => {
-      this.beers = beerList;
-      console.log(' THE BEERS', this.beers);
-    })
-
-    this.httpService.retrieveFromDatabase()
-    .subscribe((beers: any) => {
-        this.savedBeers = beers.beers;
-        console.log(this.savedBeers)
-      });
+   this.httpService
+   .getBeerDatabase()
+   .subscribe( (beers: any) => {
+    this.savedBeers = beers.data
+   })
   }
 
   switchToggled(id: number,name: string, state: boolean) {
     if (state) {
-    this.httpService.saveToDatabase(name);
+    this.httpService.saveToDatabaseVlad(id);
+    }
+    else {
+      this.httpService.deleteBeer(id)
     }
     console.log(`Switch toggled. ${id} = ${state}`)
+
   }
 
   
   goToPage(pageName:string):void{
     this.router.navigate([`/details`]);
   }
-  
-  // searchBeers(sort: string, search?: string): void {
-  //   this.httpService
-  //   .getBeerList(sort, search)
-  //   .subscribe((beerList: Array<Beer>) => {
-  //     this.beers = beerList.results;
-  //     console.log(beerList);
-  //   })
-  // }
 
   isSaved(id: number) {
-    // console.log('BEERS HERE', this.savedBeers)
-    // const savedBeers = this.httpService.retrieveFromDatabase();
-    // console.log(this.savedBeers);
-    // if (!this.savedBeers) {
-    //   throw new Error('No beers found!')
-    // }
-
-
-
     return this.savedBeers.some((beer: Beer) => {
-      // console.log('This is a beer', beer)
-
-
-
-  onSelected(){
-    this.beerSelected.emit();
       return beer.id === id
-    });
+    })
 
   }
+
+
+  onSelected() {
+    this.beerSelected.emit();
+    }
 }
 
