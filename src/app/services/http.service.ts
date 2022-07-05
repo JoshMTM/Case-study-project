@@ -24,22 +24,27 @@ export class HttpService {
     this.searchUpdated.next(search)
   }
 
-  getBeerList(
-    ordering: string,
-    search?: string
-  ): Observable<Array<Beer>> {
-    let params = new HttpParams().set('ordering', ordering);
+  // getBeerList(
+  //   ordering: string,
+  //   search?: string
+  // ): Observable<Array<Beer>> {
+  //   let params = new HttpParams().set('ordering', ordering);
 
-    if (search) {
-      params = new HttpParams().set('ordering', ordering).set('search', search);
-    }
-    return this.http.get<Array<Beer>>(`${env.BASE_URL}/beers`, {
-      params: params,
-    })
+  //   if (search) {
+  //     params = new HttpParams().set('ordering', ordering).set('search', search);
+  //   }
+  //   return this.http.get<Array<Beer>>(`${env.BASE_URL}/beers`, {
+  //     params: params,
+  //   })
+  // }
+
+  // retrieve all the beers in the database
+  getBeerDatabase(){
+    return this.http.get<any>("http://localhost:3000/api/beers")
   }
 
   // Retrieve the home page beers from backend API
-  getBeerList2() {
+  getBeerList() {
     return this.http.get<any>("http://localhost:3000/api/getbeers")
   }
 
@@ -91,12 +96,5 @@ export class HttpService {
     })
   }
 
-  retrieveFromDatabase(): any {
-    return this.http.get<any>('http://localhost:3000/api/beers')
-    // .subscribe((beerList) => {
-    //   const savedBeers: Array<any> = beerList.beers;
-    //   console.log(savedBeers)
-    //   return savedBeers;
-    // })
-}
+
 }

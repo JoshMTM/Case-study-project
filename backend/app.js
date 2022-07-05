@@ -63,7 +63,7 @@ app.get("/api/beers", (req, res, next) => {
     .then(data => {
         res.status(200).json({
             message: "Successfully retrieved beers from database",
-            beers: data
+            data
         })
         
     })
