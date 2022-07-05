@@ -62,8 +62,4 @@ export class HomeComponent implements OnInit {
     })
 
   }
-
-  openBeerDetails(id: string): void {
-    this.router.navigate(['details', id]);
-  }
 }
