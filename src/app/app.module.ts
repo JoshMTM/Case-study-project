@@ -22,6 +22,7 @@ import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptors
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptors';
 import { SubscribeButtonComponent } from './components/subscribe-button/subscribe-button.component';
 import { DatabaseCheckComponent } from './components/database-check/database-check.component';
+import { DetailsComponent } from './components/details/details.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DatabaseCheckComponent } from './components/database-check/database-che
     HomeComponent,
     FavouritesComponent,
     SubscribeButtonComponent,
-    DatabaseCheckComponent
+    DatabaseCheckComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,

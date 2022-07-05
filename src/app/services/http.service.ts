@@ -9,6 +9,10 @@ import {  Beer } from '../models';
   providedIn: 'root'
 })
 export class HttpService {
+  getBeerDetails //localhost:3000/api/beers", beer).subscribe((responseData) => {
+    (id: number) {
+      throw new Error('Method not implemented.');
+  }
 
   constructor(private http: HttpClient) { }
 

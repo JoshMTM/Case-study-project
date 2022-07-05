@@ -1,6 +1,7 @@
 //Export the beer interface
 
 export interface Beer {
+    rating: number;
     image_url: string;
     id: number;
     name: string;
