@@ -21,13 +21,13 @@ a {
       left: 0;
       z-index: 4;
     }
-  
+
     &-form {
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
     }
-  
+
     &-input {
       margin-left: 10px;
       padding: 10px;
@@ -37,7 +37,7 @@ a {
       outline: none;
       border: none;
     }
-  
+
     &-button {
       border: none;
       outline: none;
@@ -50,7 +50,7 @@ a {
       font-weight: 700;
       transition-duration: 0.3s;
       cursor: pointer;
-  
+
       &:hover {
         color: #3f51b5;
         background-color: #fff;
@@ -68,17 +68,27 @@ a {
     text-decoration: none;
   }
 
+  .favourites {
+    margin-left: 10px;
+    margin-top: 5px;
+    color: #fff;
+    font-weight: 800;
+    font-size: large;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
   .filters {
     max-width: 1200px;
     margin: 20px auto;
     padding-left: 20px;
   }
-  
+
   ::ng-deep {
     .mat-form-field-infix {
       background-color: #3f51b5;
     }
-  
+
     .mat-select-value,
     .mat-select-arrow,
     .mat-form-field-hide-placeholder .mat-select-placeholder,
@@ -86,17 +96,17 @@ a {
       color: #fff !important;
       opacity: 1;
     }
-  
+
     .mat-form-field-infix {
       border-color: #fff !important;
       border-top: none;
       padding-left: 5px !important;
     }
-  
+
     .mat-form-field-appearance-legacy .mat-form-field-label {
       padding-left: 5px;
     }
-  
+
     .mat-form-field-appearance-legacy .mat-form-field-underline {
       background-color: #fff !important;
     }
@@ -120,12 +130,12 @@ a {
     box-shadow: 4px 3px 8px 0px rgb(200 152 44 / 22%);
     transition-duration: 0.3s;
     cursor: pointer;
-  
+
     &:hover {
       box-shadow: 4px 3px 11px 6px rgb(200 152 44 / 46%);
       transform: translateY(-3px);
     }
-  
+
     &-thumb-container {
       background-color: #000;
       position: relative;
@@ -133,7 +143,7 @@ a {
       color: #fff;
       text-align: center;
     }
-  
+
     &-thumbnail {
       position: absolute;
       top: 0;
@@ -142,7 +152,7 @@ a {
       margin: 0 auto;
       height: 172px;
     }
-  
+
     &-description {
       padding: 20px;
       display: flex;
@@ -150,7 +160,7 @@ a {
       justify-content: flex-end;
       height: 157px;
     }
-  
+
     &-name {
       color: #fff;
       font-weight: 700;
@@ -160,11 +170,11 @@ a {
       text-overflow: ellipsis;
       overflow: hidden;
     }
-  
+
     &-platforms {
       display: flex;
     }
-  
+
     &-platform {
       width: 120px;
       margin-right: 10px;
