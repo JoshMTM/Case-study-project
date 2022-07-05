@@ -14,20 +14,21 @@ export class SearchComponent implements OnInit {
   public savedBeers: any | undefined;
 
 
-  public constructor(private httpService: HttpService) { };
-
-
-  ngOnInit(): void {
+  public constructor(private httpService: HttpService) { 
     this.httpService.searchUpdated.subscribe((value) => {
       console.log('subscribing: ', value);
       this.onSearch(value);
     })
+    
     this.httpService
-   .getBeerDatabase()
-   .subscribe( (beers: any) => {
-    this.savedBeers = beers.data
-   })
+     .getBeerDatabase()
+     .subscribe( (beers: any) => {
+      this.savedBeers = beers.data
+    })
+  };
 
+
+  ngOnInit(): void {
 
   }
 
@@ -41,10 +42,12 @@ export class SearchComponent implements OnInit {
     console.log(`Switch toggled. ${id} = ${state}`)
 
   }
+  
   isSaved(id: number) {
     return this.savedBeers.some((beer: any) => {
       return beer.id === id
     })
+
   }
 
   public async onSearch(search: string) {

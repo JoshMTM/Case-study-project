@@ -1,7 +1,7 @@
-<div class="details">
+<div class="details" *ngIf="show">
     <div class="beer-banner">
-        <img
-            src="{{beer.image_url}}"
+        <img 
+            src="{{beer[0].image_url}}" 
             class="beer-banner-img"
             alt="beer image"
         >
@@ -10,18 +10,17 @@
         <div class="details-wrapper">
             <div class="beer-header">
                 <h1 class="title">First Beer</h1>
-                <h1 class="title">{{beer.name}}</h1>
-                <h2 class="beer-header-released-date">Released: {{beer.first_brewed}}</h2>
-                <p class="contributed">Contributed by: {{beer.contributed_by}}</p>
+                <h1 class="title">{{beer[0].name}}</h1>
+                <h2 class="beer-header-released-date">Released: {{beer[0].first_brewed}}</h2>
+                <p class="contributed">Contributed by: {{beer[0].contributed_by}}</p>
                 <p class="beer-header-type">
                     <span>BROWN</span>
                 </p>
                 <div class="ingredients"
-                *NgFor="let ingredient of beer.ingredients"
+                *ngFor="let pairing of beer[0].food_pairing"
                 >
-                <h3>List of ingredients</h3>
-                <p>ingredient1</p>
-                <p>ingredient1</p>
+                <h3>Great to pair with:</h3>
+                <p>{{ pairing }}</p>
                 </div>
                 <div class="beer-gauge">
                     <mwl-gauge

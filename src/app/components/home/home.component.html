@@ -23,7 +23,7 @@
             class="beer-thumbnail"
             routerLinkActive="active"
             routerLink="/details"
-            (click)="goToPage('details')"
+            (click)="goToPage('details', beer.id)"
             />
 
             <p *ngIf="!beer.image_url">No Image</p>
