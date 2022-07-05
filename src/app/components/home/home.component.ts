@@ -23,21 +23,22 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private  httpService: HttpService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    this.httpService
+    .getBeerList()
+    .subscribe( (beerList: any) => { 
+     this.beers = beerList.data;
+      console.log(this.beers);
+    })
+ 
+    this.httpService
+    .getBeerDatabase()
+    .subscribe( (beers: any) => {
+     this.savedBeers = beers.data
+    })
+  }
 
   ngOnInit(): void {
-   this.httpService
-   .getBeerList()
-   .subscribe( (beerList: any) => { 
-    this.beers = beerList.data;
-     console.log(this.beers);
-   })
-
-   this.httpService
-   .getBeerDatabase()
-   .subscribe( (beers: any) => {
-    this.savedBeers = beers.data
-   })
   }
 
   switchToggled(id: number,name: string, state: boolean) {
@@ -52,7 +53,8 @@ export class HomeComponent implements OnInit {
   }
 
   
-  goToPage(pageName:string):void{
+  goToPage(pageName:string, id: number):void{
+    this.httpService.passID(id)
     this.router.navigate([`/details`]);
   }
 

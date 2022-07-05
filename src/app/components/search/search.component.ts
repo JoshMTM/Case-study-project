@@ -13,14 +13,15 @@ export class SearchComponent implements OnInit {
   Beers: any = []
 
 
-  public constructor(private httpService: HttpService) { };
-
-
-  ngOnInit(): void {
+  public constructor(private httpService: HttpService) { 
     this.httpService.searchUpdated.subscribe((value) => {
       console.log('subscribing: ', value);
       this.onSearch(value);
     })
+  };
+
+
+  ngOnInit(): void {
   }
 
   public async onSearch(search: string) {

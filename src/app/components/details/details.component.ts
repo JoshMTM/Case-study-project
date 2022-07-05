@@ -9,41 +9,29 @@ import { HttpService } from 'src/app/services/http.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent implements OnInit, OnDestroy {
-
-  public beers: Array<Beer> | undefined;
+export class DetailsComponent implements OnInit {
 
   beerRating = 0;
-  beerId!: number;
-  beer!: Beer;
-  routeSub: Subscription = new Subscription;
-  beerSub: any;
+  beerId: number = 0;
+  beer: any = [];
+  show: boolean = false
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private httpService: HttpService
-  ) { }
-
-  ngOnInit(): void {
-    this.httpService
-    .getBeerList()
-    .subscribe((beerList: any) => {
-      this.beers = beerList.data;
-      console.log(this.beers);
+  ) { 
+    this.httpService.idUpdated.subscribe( (value) => {
+      this.beerId = value
+      this.httpService.getBeerById(value).subscribe( (data) => {
+        this.beer = data.data 
+        this.show = true
+        console.log(this.beer[0].food_pairing)
+      })
     })
   }
-  
-  // getBeerDetails(id: number): void {
-  //   this.beerSub = this.httpService
-  //   .getBeerDetails(id)
-  //   .subscribe((beerResp: Beer) => {
-  //     this.beer = beerResp;
 
-  //     setTimeout(() => {
-  //       this.beerRating = this.beer.rating;
-  //     }, 1000);
-  //   });
-  // }
+  ngOnInit(): void {
+  }
 
 
   getColor(value: number): string {
@@ -55,13 +43,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
       return '#f7aa38'
     } else {
       return '#ef4655'
-    }
-  }
-
-
-  ngOnDestroy(): void {
-    if (this.beerSub) {
-      this.beerSub.unsubscribe();
     }
   }
 }
