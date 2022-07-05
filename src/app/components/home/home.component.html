@@ -21,7 +21,11 @@
             src="{{ beer.image_url }}"
             alt="thumbnail"
             class="beer-thumbnail"
+            routerLinkActive="active"
+            routerLink="/details"
+            (click)="goToPage('details')"
             />
+
             <p *ngIf="!beer.image_url">No Image</p>
         </div>
         <div class="beer-description">
