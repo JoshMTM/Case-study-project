@@ -13,6 +13,8 @@ import { DetailsComponent } from '../details/details.component';
 })
 export class HomeComponent implements OnInit {
   public sort: string | undefined;
+  // public beers: any = []
+  
   @Output() beerSelected = new EventEmitter<void>();
  
   public beers: Array<Beer> | undefined;
@@ -25,6 +27,11 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+   // this.httpService
+   // .getBeerList2()
+   // .subscribe( (beerList: any) => { 
+   //  this.beers = beerList.data;
+   //   console.log(this.beers);
 
     this.httpService
     .getBeerList('metacrit')
@@ -47,7 +54,6 @@ export class HomeComponent implements OnInit {
     console.log(`Switch toggled. ${id} = ${state}`)
   }
 
-
   
   goToPage(pageName:string):void{
     this.router.navigate([`/details`]);
@@ -61,7 +67,7 @@ export class HomeComponent implements OnInit {
   //     console.log(beerList);
   //   })
   // }
-=======
+
   isSaved(id: number) {
     // console.log('BEERS HERE', this.savedBeers)
     // const savedBeers = this.httpService.retrieveFromDatabase();
@@ -71,6 +77,7 @@ export class HomeComponent implements OnInit {
     // }
 
 
+
     return this.savedBeers.some((beer: Beer) => {
       // console.log('This is a beer', beer)
 
@@ -78,7 +85,6 @@ export class HomeComponent implements OnInit {
 
   onSelected(){
     this.beerSelected.emit();
-=======
       return beer.id === id
     });
 

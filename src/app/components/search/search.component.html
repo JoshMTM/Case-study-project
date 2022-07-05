@@ -1,0 +1,32 @@
+<div *ngIf="showResults">
+    <div class="beers">
+        <ng-container *ngFor="let beer of Beers">
+        <div class="beer">
+            <div class="beer-thumb-container">
+                <img
+                *ngIf="beer.image_url"
+                src="{{ beer.image_url }}"
+                alt="thumbnail"
+                class="beer-thumbnail"
+                />
+                <p *ngIf="!beer.image_url">No Image</p>
+            </div>
+            <div class="beer-description">
+                <p class="beer-name">{{beer.name}}</p>
+                <div class="beer-platforms">
+                    <img src="https://www.amsterdamcareerdays.nl/wp-content/uploads/2020/12/Heineken-Logo1.png"
+                    alt="slug"
+                    class="beer-platform">
+                    <app-subscribe-button></app-subscribe-button>
+                </div>
+            </div>
+        </div>
+        </ng-container>
+    </div>
+</div>
+
+<div class="beers" *ngIf="noResults">
+    <ng-container>
+        <p> Your search yielded no results! Try a different beer name. </p>
+    </ng-container>
+</div>

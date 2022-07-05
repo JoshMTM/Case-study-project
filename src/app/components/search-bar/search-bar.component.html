@@ -13,7 +13,11 @@
     </ul>
 
     <input type="text" name="search" placeholder="Search 1000+ Beers locally and international" class="search-input" [(ngModel)]="searchInput"/>
-    <button class="search-button" (click)="onSearch()">
+    <button class="search-button" (click)="onSearch()" routerLink="/search">
         Search
     </button>
 </div>
+
+<!-- <app-search [searchQuery]="searchInput"></app-search> -->
+
+<router-outlet></router-outlet>
