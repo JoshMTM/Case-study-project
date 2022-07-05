@@ -33,9 +33,9 @@ export class SearchBarComponent implements OnInit {
   }
 
   onClick() {
-    this.http.get<any>('http://localhost:3000/api/beers')
-    .subscribe((data) => {
-      console.log(data)
+    this.httpService.getBeerDatabase()
+    .subscribe((beerList) => {
+      console.log(beerList.data)
     })
   }
 

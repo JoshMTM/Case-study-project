@@ -46,6 +46,19 @@ app.post("/api/getbeers", (req, res, next) => {
     })
 })
 
+// get beers from API by id number
+app.get("/api/beers/:id", (req, res, next) => {
+    const id = req.params.id
+
+    request({ url: url + '?ids=' + id, method: 'GET' }, (error, response) => {
+        const data = JSON.parse(response.body)
+        res.status(201).json({
+            message: 'Sucessfully found beer from API' ,
+            data
+        })
+    })
+})
+
 // get beers for home page
 app.get("/api/getbeers", (req, res, next) => {
     request({ url: url, method: 'GET' }, (error, response) => {
