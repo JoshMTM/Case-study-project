@@ -1,6 +1,7 @@
 <div class="table-users" *ngIf="show">
     <div class="header">{{ beer[0].name }}</div>
-    
+
+
     <table cellspacing="0">
        <tr>
           <th>Picture</th>
@@ -8,8 +9,9 @@
           <th>First Brewed</th>
           <th>Food Pairing</th>
           <th width="230">Description</th>
+          <th><app-subscribe-button [enableSwitch]="isSaved(beer[0].id)" (enableSwitchChange)="switchToggled(beer[0].id, beer[0].name, $event)"></app-subscribe-button></th>
        </tr>
- 
+
        <tr>
           <td><img src="{{beer[0].image_url}}" alt="" /></td>
           <td>{{ beer[0].name }}</td>
@@ -67,4 +69,4 @@
             material tabs
          </div>
     </div>
-</div> --> 
+</div> -->
