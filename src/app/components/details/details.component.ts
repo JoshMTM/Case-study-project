@@ -14,19 +14,25 @@ export class DetailsComponent implements OnInit {
   beerRating = 0;
   beerId: number = 0;
   beer: any = [];
-  show: boolean = false
+  show: boolean = false;
+  public savedBeers: any | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private httpService: HttpService
-  ) { 
+  ) {
     this.httpService.idUpdated.subscribe( (value) => {
       this.beerId = value
       this.httpService.getBeerById(value).subscribe( (data) => {
-        this.beer = data.data 
+        this.beer = data.data
         this.show = true
         console.log(this.beer[0].food_pairing)
       })
+    })
+    this.httpService
+     .getBeerDatabase()
+     .subscribe( (beers: any) => {
+      this.savedBeers = beers.data
     })
   }
 
@@ -45,4 +51,20 @@ export class DetailsComponent implements OnInit {
       return '#ef4655'
     }
   }
+  switchToggled(id: number, name: string, state: boolean) {
+    if (state) {
+    this.httpService.saveToDatabaseVlad(id);
+    }
+    else {
+      this.httpService.deleteBeer(id)
+    }
+    console.log(`Switch toggled. ${id} = ${state}`)
+
+  }
+
+  isSaved(id: number) {
+    return this.savedBeers.some((beer: any) => {
+      return beer.id === id
+    })
+}
 }
