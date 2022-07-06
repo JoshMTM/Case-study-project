@@ -9,7 +9,7 @@
           <th>First Brewed</th>
           <th>Food Pairing</th>
           <th width="230">Description</th>
-          <th><app-subscribe-button [enableSwitch]="isSaved(beer.id)" (enableSwitchChange)="switchToggled(beer.id,beer.name, $event)"></app-subscribe-button></th>
+          <th><app-subscribe-button [enableSwitch]="isSaved(beer[0].id)" (enableSwitchChange)="switchToggled(beer[0].id, beer[0].name, $event)"></app-subscribe-button></th>
        </tr>
 
        <tr>

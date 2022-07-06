@@ -67,4 +67,5 @@ export class DetailsComponent implements OnInit {
       return beer.id === id
     })
 }
+
 }
